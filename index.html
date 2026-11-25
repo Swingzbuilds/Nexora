@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NEXORA — Technology made simple. Website design, creative services and digital solutions.">
+<title>NEXORA | Technology Made Simple</title>
+<style>
+:root{
+  --bg:#080e0b;
+  --panel:#111b14;
+  --panel2:#17251b;
+  --green:#36df7b;
+  --white:#f5fff7;
+  --muted:#a7b6aa;
+  --border:#293b2e;
+  --max:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.65;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+.container{width:min(var(--max),88%);margin:auto}
+.green{color:var(--green)}
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(8,14,11,.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.nav{
+  height:82px;display:flex;align-items:center;
+  justify-content:space-between;gap:30px;
+}
+.logo{font-size:29px;font-weight:900;letter-spacing:3px}
+.logo span{color:var(--green)}
+.navlinks{display:flex;align-items:center;gap:29px}
+.navlinks a{font-size:14px;color:var(--muted);transition:.2s}
+.navlinks a:hover{color:var(--green)}
+.navlinks .contact-link{color:var(--green);font-weight:bold}
+.menu{
+  display:none;background:transparent;color:white;
+  border:1px solid var(--border);padding:9px 13px;
+  border-radius:7px;font-size:19px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--green);color:#07110a;
+  padding:14px 24px;border-radius:7px;
+  font-weight:800;border:1px solid var(--green);
+  transition:.2s;
+}
+.btn:hover{transform:translateY(-3px);background:#6af59b}
+.btn.secondary{background:transparent;color:var(--green)}
+.btn.secondary:hover{background:var(--green);color:#07110a}
+.hero{
+  min-height:680px;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 80% 35%,#174c2a 0%,transparent 42%),
+    radial-gradient(ellipse at 15% 90%,#102b19 0%,transparent 38%);
+}
+.hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(#36df7b0c 1px,transparent 1px),
+    linear-gradient(90deg,#36df7b0c 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+.hero-grid{
+  position:relative;display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;gap:60px;padding:100px 0;
+}
+.eyebrow{
+  color:var(--green);font-size:12px;font-weight:800;
+  letter-spacing:3px;text-transform:uppercase;
+}
+.hero h1{
+  font-size:clamp(55px,7vw,92px);
+  line-height:1.04;letter-spacing:-4px;
+  margin:22px 0;
+}
+.hero p{color:var(--muted);font-size:18px;max-width:610px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-art{
+  min-height:350px;display:grid;place-items:center;
+  position:relative;
+}
+.orbit{
+  width:min(340px,75vw);aspect-ratio:1;
+  border:1px solid #36df7b55;border-radius:50%;
+  display:grid;place-items:center;position:relative;
+  box-shadow:0 0 80px #36df7b16,inset 0 0 70px #36df7b0b;
+}
+.orbit:before,.orbit:after{
+  content:"";position:absolute;border:1px solid #36df7b44;
+  border-radius:50%;
+}
+.orbit:before{inset:12%}
+.orbit:after{inset:25%}
+.orbit-core{
+  width:115px;height:115px;border-radius:28px;
+  background:linear-gradient(145deg,#36df7b,#11622e);
+  color:#06100a;font-size:50px;font-weight:900;
+  display:grid;place-items:center;
+  box-shadow:0 0 55px #36df7b55;
+  z-index:2;
+}
+.orbit-dot{
+  position:absolute;width:13px;height:13px;
+  border-radius:50%;background:var(--green);
+  box-shadow:0 0 20px var(--green);
+}
+.dot1{top:13%;left:25%}.dot2{right:10%;top:48%}
+.dot3{bottom:12%;left:27%}
+.stats{
+  display:flex;gap:50px;flex-wrap:wrap;
+  padding:27px 0;border-top:1px solid var(--border);
+  margin-top:50px;
+}
+.stat strong{display:block;font-size:23px;color:var(--green)}
+.stat span{font-size:13px;color:var(--muted)}
+section{padding:105px 0}
+.section-head{text-align:center;max-width:700px;margin:0 auto 55px}
+.section-head h2{font-size:clamp(34px,4vw,48px);line-height:1.2;margin:12px 0}
+.section-head p{color:var(--muted)}
+.services{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.card{
+  padding:30px;background:var(--panel);
+  border:1px solid var(--border);border-radius:13px;
+  transition:.25s;
+}
+.card:hover{border-color:var(--green);transform:translateY(-5px)}
+.icon{
+  width:50px;height:50px;display:grid;place-items:center;
+  background:#1c3825;border-radius:11px;
+  font-size:24px;margin-bottom:20px;
+}
+.card h3{font-size:20px;margin-bottom:9px}
+.card p{color:var(--muted);font-size:14px}
+.price{color:var(--green);font-size:14px;font-weight:bold;margin-top:17px}
+.note{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}
+.about{background:#0d1710;border-block:1px solid var(--border)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:75px;align-items:center;
+}
+.about h2{font-size:clamp(35px,4vw,49px);line-height:1.2;margin:15px 0}
+.about p{color:var(--muted);margin-bottom:18px}
+.about-panel{
+  background:linear-gradient(140deg,#173b24,#101a13);
+  border:1px solid #315c3c;border-radius:16px;padding:40px;
+}
+.about-panel h3{font-size:28px;margin:15px 0}
+.about-panel p{color:#c0d0c4}
+.features{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin-top:27px;
+}
+.feature{
+  background:#101c13;border:1px solid var(--border);
+  border-radius:8px;padding:14px;font-size:13px;
+}
+.feature span{color:var(--green);margin-right:8px}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.package{
+  background:var(--panel);border:1px solid var(--border);
+  padding:34px;border-radius:13px;
+}
+.package.featured{
+  border-color:var(--green);
+  background:linear-gradient(150deg,#173a24,#111b14);
+}
+.package h3{font-size:24px}
+.amount{font-size:34px;color:var(--green);font-weight:900;margin:15px 0}
+.package p{color:var(--muted);font-size:14px}
+.package ul{list-style:none;margin:25px 0}
+.package li{padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+.package li:before{content:"✓";color:var(--green);margin-right:10px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;padding:27px;
+}
+.number{font-size:34px;font-weight:900;color:var(--green)}
+.step h3{margin:12px 0}
+.step p{font-size:14px;color:var(--muted)}
+.portfolio{background:#0d1710;border-block:1px solid var(--border)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:13px;overflow:hidden;
+}
+.project-art{
+  height:210px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#1a4828,#101b13);
+  font-size:60px;
+}
+.project-info{padding:25px}
+.project-label{font-size:11px;color:var(--green);letter-spacing:2px}
+.project-info h3{margin:8px 0}
+.project-info p{color:var(--muted);font-size:14px}
+.faq{max-width:850px;margin:auto}
+details{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:9px;padding:21px 23px;margin-bottom:13px;
+}
+summary{cursor:pointer;font-weight:bold}
+details p{color:var(--muted);padding-top:14px;font-size:14px}
+.contact{background:#0d1710;border-top:1px solid var(--border)}
+.contact-grid{
+  display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:65px;align-items:start;
+}
+.contact h2{font-size:clamp(36px,4vw,49px);line-height:1.2;margin:15px 0}
+.contact-copy p{color:var(--muted);margin-bottom:17px}
+.email{color:var(--green);font-weight:bold}
+.form{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:14px;padding:32px;
+}
+.form h3{font-size:23px;margin-bottom:20px}
+.form label{display:block;font-size:13px;margin:14px 0 7px}
+.form input,.form textarea,.form select{
+  display:block;width:100%;padding:14px;
+  background:#080f0a;color:white;
+  border:1px solid var(--border);border-radius:7px;
+  outline:none;
+}
+.form input:focus,.form textarea:focus,.form select:focus{
+  border-color:var(--green);
+}
+.form textarea{min-height:130px;resize:vertical}
+.form button{width:100%;margin-top:20px;cursor:pointer}
+.form small{display:block;color:var(--muted);font-size:11px;margin-top:13px}
+footer{padding:40px 0;border-top:1px solid var(--border)}
+.footer{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:25px;flex-wrap:wrap;
+}
+.footer p{color:var(--muted);font-size:12px}
+.footer-links{display:flex;gap:23px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--muted)}
+.footer-links a:hover{color:var(--green)}
+@media(max-width:950px){
+  .hero-grid{grid-template-columns:1fr  .7fr;gap:20px}
+  .services{grid-template-columns:repeat(2,1fr)}
+  .about-grid{gap:35px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{gap:35px}
+}
+@media(max-width:700px){
+  .container{width:90%}
+  .nav{height:72px}
+  .menu{display:block}
+  .navlinks{
+    display:none;position:absolute;top:72px;left:0;width:100%;
+    background:#080e0b;padding:22px 5%;
+    flex-direction:column;align-items:flex-start;
+    border-bottom:1px solid var(--border);
+  }
+  .navlinks.open{display:flex}
+  .hero-grid{grid-template-columns:1fr;padding:80px 0}
+  .hero h1{font-size:clamp(48px,12vw,70px);letter-spacing:-2px}
+  .hero p{font-size:16px}
+  .hero-art{min-height:270px}
+  .orbit{width:245px}
+  .orbit-core{width:85px;height:85px;font-size:38px}
+  .stats{gap:25px;margin-top:35px}
+  section{padding:75px 0}
+  .services,.packages,.projects,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .about-panel{padding:27px}
+  .features{grid-template-columns:1fr 1fr}
+  .project-art{height:170px}
+  .form{padding:23px}
+}
+@media(max-width:420px){
+  .steps,.features{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .stats{gap:20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">NEXORA<span>.</span></a>
+    <button class="menu" id="menuButton" aria-label="Open navigation">☰</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#packages">Packages</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="contact-link">Contact ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">WELCOME TO NEXORA</div>
+      <h1>Technology<br>made <span class="green">simple.</span></h1>
+      <p>Modern websites, creative digital content and practical technology solutions to help people and businesses move forward.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#services">Explore services →</a>
+        <a class="btn secondary" href="#contact">Start a project</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>01</strong><span>Web design</span></div>
+        <div class="stat"><strong>02</strong><span>PC services</span></div>
+        <div class="stat"><strong>03</strong><span>Creative work</span></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="orbit">
+        <div class="orbit-core">N</div>
+        <i class="orbit-dot dot1"></i>
+        <i class="orbit-dot dot2"></i>
+        <i class="orbit-dot dot3"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">WHAT WE DO</div>
+      <h2>Our <span class="green">Services</span></h2>
+      <p>Digital services designed to help you create, improve and grow.</p>
+    </div>
+    <div class="services">
+      <article class="card"><div class="icon">🌐</div><h3>Website Design</h3><p>Modern responsive websites for small businesses, creators and personal projects.</p><div class="price">Starting at $50 CAD</div></article>
+      <article class="card"><div class="icon">💻</div><h3>PC Setup</h3><p>Help with computer setup, software installation and basic configuration.</p><div class="price">Starting at $20 CAD</div></article>
+      <article class="card"><div class="icon">⚙️</div><h3>PC Troubleshooting</h3><p>Basic troubleshooting and help with common computer problems.</p><div class="price">Starting at $20 CAD</div></article>
+      <article class="card"><div class="icon">🎬</div><h3>Video Editing</h3><p>Short-form content for YouTube Shorts, Reels and TikTok.</p><div class="price">Starting at $10 CAD</div></article>
+      <article class="card"><div class="icon">🎨</div><h3>Graphic Design</h3><p>Promotional graphics, digital designs and branded content.</p><div class="price">Starting at $10 CAD</div></article>
+      <article class="card"><div class="icon">📱</div><h3>Social Media Design</h3><p>Consistent visuals and content layouts for social platforms.</p><div class="price">Starting at $15 CAD</div></article>
+      <article class="card"><div class="icon">🖥️</div><h3>Website Maintenance</h3><p>Content updates, image replacements and basic improvements.</p><div class="price">Starting at $15 CAD</div></article>
+      <article class="card"><div class="icon">📊</div><h3>Presentations</h3><p>Clean presentation layouts for school, projects and businesses.</p><div class="price">Starting at $15 CAD</div></article>
+      <article class="card"><div class="icon">🛡️</div><h3>Digital Safety Setup</h3><p>Basic privacy settings and safer device configuration guidance.</p><div class="price">Starting at $20 CAD</div></article>
+      <article class="card"><div class="icon">📧</div><h3>Business Email Setup</h3><p>Guidance with professional email setup and organization.</p><div class="price">Starting at $15 CAD</div></article>
+      <article class="card"><div class="icon">🧩</div><h3>Digital Templates</h3><p>Custom layouts, documents and reusable digital templates.</p><div class="price">Starting at $10 CAD</div></article>
+      <article class="card"><div class="icon">🚀</div><h3>Digital Business Setup</h3><p>Help planning a digital presence, from branding to a basic website.</p><div class="price">Starting at $35 CAD</div></article>
+    </div>
+    <p class="note">Proposed introductory prices. Final quotes depend on the project.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div>
+      <div class="eyebrow">ABOUT NEXORA</div>
+      <h2>We make technology work <span class="green">for you.</span></h2>
+      <p>NEXORA is a developing technology and digital services brand focused on making technology easier to understand and use.</p>
+      <p>We believe good digital experiences should be clear, practical and accessible. Our goal is to help people and small businesses bring their ideas to life.</p>
+      <a class="btn" href="#contact">Let's talk →</a>
+    </div>
+    <div class="about-panel">
+      <div class="eyebrow">OUR APPROACH</div>
+      <h3>Simple. Modern. Reliable.</h3>
+      <p>Every project starts with understanding what you need and finding a practical way to deliver it.</p>
+      <div class="features">
+        <div class="feature"><span>✓</span> Clear communication</div>
+        <div class="feature"><span>✓</span> Modern designs</div>
+        <div class="feature"><span>✓</span> Practical solutions</div>
+        <div class="feature"><span>✓</span> Project-focused work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">SIMPLE OPTIONS</div>
+      <h2>Our <span class="green">Packages</span></h2>
+      <p>Starting package concepts for different digital needs.</p>
+    </div>
+    <div class="packages">
+      <article class="package">
+        <h3>Starter</h3><div class="amount">$35+</div>
+        <p>For individuals and small projects.</p>
+        <ul><li>One basic digital service</li><li>Simple custom design</li><li>One revision</li><li>Basic project guidance</li></ul>
+        <a class="btn secondary" href="#contact">Ask about Starter</a>
+      </article>
+      <article class="package featured">
+        <div class="eyebrow">POPULAR CONCEPT</div>
+        <h3>Business</h3><div class="amount">$100+</div>
+        <p>For small businesses building their online presence.</p>
+        <ul><li>Basic website project</li><li>Custom visual branding</li><li>Up to three page sections</li><li>Basic mobile layout</li><li>Two revisions</li></ul>
+        <a class="btn" href="#contact">Ask about Business</a>
+      </article>
+      <article class="package">
+        <h3>Custom</h3><div class="amount">Let's talk</div>
+        <p>For projects with specific requirements.</p>
+        <ul><li>Custom project scope</li><li>Personalized design</li><li>Flexible service selection</li><li>Project planning</li><li>Custom quote</li></ul>
+        <a class="btn secondary" href="#contact">Request a quote</a>
+      </article>
+    </div>
+    <p class="note">Packages are proposals. Deliverables, timing and pricing must be agreed before work begins.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">HOW IT WORKS</div>
+      <h2>Simple from <span class="green">start to finish.</span></h2>
+      <p>A clear process for every project.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="number">01</div><h3>Get in touch</h3><p>Tell us about your idea, needs and goals.</p></div>
+      <div class="step"><div class="number">02</div><h3>Plan</h3><p>Discuss the project and agree on its scope.</p></div>
+      <div class="step"><div class="number">03</div><h3>Create</h3><p>The project is developed and reviewed.</p></div>
+      <div class="step"><div class="number">04</div><h3>Deliver</h3><p>Receive the completed work and agreed files.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">OUR PORTFOLIO</div>
+      <h2>Ideas into <span class="green">reality.</span></h2>
+      <p>Explore the kinds of projects NEXORA is developing.</p>
+    </div>
+    <div class="projects">
+      <article class="project"><div class="project-art">🌐</div><div class="project-info"><div class="project-label">WEB DESIGN CONCEPT</div><h3>Business Websites</h3><p>Modern layouts designed to present businesses and their services.</p></div></article>
+      <article class="project"><div class="project-art">🎨</div><div class="project-info"><div class="project-label">CREATIVE CONCEPT</div><h3>Digital Branding</h3><p>Visual identities and graphics for digital platforms.</p></div></article>
+      <article class="project"><div class="project-art">💻</div><div class="project-info"><div class="project-label">TECH PROJECT</div><h3>Technology Solutions</h3><p>Practical experiments and tools built to solve technology problems.</p></div></article>
+    </div>
+    <p class="note">Illustrative project categories, not completed customer projects.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">QUESTIONS</div>
+      <h2>Frequently asked <span class="green">questions.</span></h2>
+    </div>
+    <div class="faq">
+      <details><summary>What does NEXORA do?</summary><p>NEXORA is a developing digital services brand offering website design, creative content and basic technology support.</p></details>
+      <details><summary>Who are your services for?</summary><p>Our planned audience includes individuals, creators and small businesses.</p></details>
+      <details><summary>How much do services cost?</summary><p>Our website shows proposed introductory prices. Final pricing depends on the work required.</p></details>
+      <details><summary>How do I request a project?</summary><p>Use the contact section to describe what you need. We can discuss project requirements and next steps.</p></details>
+      <details><summary>Do you offer custom projects?</summary><p>Yes, custom project ideas can be discussed and quoted based on their scope.</p></details>
+      <details><summary>How long does a project take?</summary><p>Timelines depend on project complexity and will be discussed before work begins.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <div class="eyebrow">CONTACT NEXORA</div>
+      <h2>Let's build something <span class="green">great.</span></h2>
+      <p>Have an idea, a question or a project in mind? Tell us what you're looking for.</p>
+      <p>✉ <a class="email" href="mailto:100swingz@gmail.com">100swingz@gmail.com</a></p>
+      <p>We aim to make communication clear and straightforward.</p>
+    </div>
+    <form class="form" id="contactForm">
+      <h3>Project enquiry</h3>
+      <label for="name">Your name</label>
+      <input id="name" required placeholder="Enter your name">
+      <label for="email">Your email</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+      <label for="service">What do you need?</label>
+      <select id="service" required>
+        <option value="">Choose a service</option>
+        <option>Website Design</option>
+        <option>PC Services</option>
+        <option>Video Editing</option>
+        <option>Graphic Design</option>
+        <option>Social Media Design</option>
+        <option>Website Maintenance</option>
+        <option>Business Presentations</option>
+        <option>Digital Safety Setup</option>
+        <option>Other / Custom Project</option>
+      </select>
+      <label for="message">Tell us about your project</label>
+      <textarea id="message" required placeholder="Describe your idea..."></textarea>
+      <button class="btn" type="submit">Prepare enquiry →</button>
+      <small>This opens an email draft addressed to NEXORA. It does not store information online.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <a href="#home" class="logo">NEXORA<span>.</span></a>
+      <p>Technology made simple.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>© 2026 NEXORA. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const menuButton=document.getElementById("menuButton");
+const navlinks=document.getElementById("navlinks");
+
+menuButton.addEventListener("click",()=>{
+  navlinks.classList.toggle("open");
+});
+
+document.querySelectorAll(".navlinks a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navlinks.classList.remove("open");
+  });
+});
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const recipient="100swingz@gmail.com";
+  const name=document.getElementById("name").value;
+  const email=document.getElementById("email").value;
+  const service=document.getElementById("service").value;
+  const message=document.getElementById("message").value;
+
+  const subject=encodeURIComponent("NEXORA Project Enquiry - "+service);
+  const body=encodeURIComponent(
+    "Name: "+name+"\n"+
+    "Email: "+email+"\n"+
+    "Service: "+service+"\n\n"+
+    "Project details:\n"+message
+  );
+  window.location.href="mailto:"+recipient+"?subject="+subject+"&body="+body;
+});
+</script>
+</body>
+</html>
